@@ -1,65 +1,320 @@
-import Image from "next/image";
+import { portfolio } from "@/data/portfolio";
+
+const navItems = [
+  { label: "About", href: "#about" },
+  { label: "Impact", href: "#impact" },
+  { label: "Systems", href: "#systems" },
+  { label: "Experience", href: "#experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Contact", href: "#contact" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main className="page-shell">
+      <section className="hero-panel">
+        <header className="topbar">
+          <div>
+            <p className="eyebrow">Portfolio / 2026</p>
+            <a className="wordmark" href="#top">
+              {portfolio.name}
+            </a>
+          </div>
+          <nav className="nav">
+            {navItems.map((item) => (
+              <a key={item.href} href={item.href}>
+                {item.label}
+              </a>
+            ))}
+          </nav>
+        </header>
+
+        <div className="hero-grid" id="top">
+          <div className="hero-copy">
+            <p className="kicker">{portfolio.location}</p>
+            <h1>{portfolio.heroTitle}</h1>
+            <p className="lede">{portfolio.intro}</p>
+            <div className="metric-strip">
+              {portfolio.metrics.map((metric) => (
+                <article key={metric.label} className="metric-card">
+                  <p className="metric-value">{metric.value}</p>
+                  <h3>{metric.label}</h3>
+                  <p>{metric.context}</p>
+                </article>
+              ))}
+            </div>
+            <div className="hero-actions">
+              <a className="button button-primary" href="#impact">
+                View engineering impact
+              </a>
+              <a
+                className="button button-secondary"
+                href="/deepak-sarangi-resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open resume
+              </a>
+            </div>
+            <div className="external-links">
+              <a
+                href={portfolio.links.github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+              <a
+                href={portfolio.links.linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <aside className="hero-card">
+            <p className="card-label">Quick profile</p>
+            <dl>
+              <div>
+                <dt>Role</dt>
+                <dd>{portfolio.role}</dd>
+              </div>
+              <div>
+                <dt>Focus</dt>
+                <dd>Data systems, platform reliability, architecture decisions</dd>
+              </div>
+              <div>
+                <dt>Email</dt>
+                <dd>
+                  <a href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
+                </dd>
+              </div>
+              <div>
+                <dt>Phone</dt>
+                <dd>
+                  <a href={`tel:${portfolio.phone.replace(/\s+/g, "")}`}>
+                    {portfolio.phone}
+                  </a>
+                </dd>
+              </div>
+            </dl>
+          </aside>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="content-grid" id="about">
+        <div className="section-heading">
+          <p className="eyebrow">About</p>
+          <h2>Staff trajectory built on scale, reliability, and influence.</h2>
         </div>
-      </main>
-    </div>
+        <div className="stack">
+          {portfolio.summary.map((item) => (
+            <p key={item} className="body-copy">
+              {item}
+            </p>
+          ))}
+          <div className="strength-grid">
+            {portfolio.strengths.map((strength) => (
+              <article key={strength.title} className="info-card compact-card">
+                <h3>{strength.title}</h3>
+                <p>{strength.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="content-grid" id="impact">
+        <div className="section-heading">
+          <p className="eyebrow">Impact</p>
+          <h2>Engineering impact and technical leadership.</h2>
+        </div>
+        <div className="split-panel">
+          <ul className="detail-list">
+            {portfolio.impactLens.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-grid" id="systems">
+        <div className="section-heading">
+          <p className="eyebrow">Systems</p>
+          <h2>How I think about systems.</h2>
+        </div>
+        <div className="split-panel">
+          <ul className="detail-list">
+            {portfolio.systemThinking.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-grid">
+        <div className="section-heading">
+          <p className="eyebrow">Decisions</p>
+          <h2>Decision-making and trade-offs.</h2>
+        </div>
+        <div className="split-panel">
+          <ul className="detail-list">
+            {portfolio.decisions.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-grid" id="experience">
+        <div className="section-heading">
+          <p className="eyebrow">Experience</p>
+          <h2>Roles that shaped my engineering approach.</h2>
+        </div>
+        <div className="timeline">
+          {portfolio.experience.map((item) => (
+            <article
+              key={`${item.company}-${item.period}`}
+              className="timeline-card"
+            >
+              <div className="timeline-head">
+                <div>
+                  <p className="timeline-company">{item.company}</p>
+                  <h3>{item.role}</h3>
+                </div>
+                <p className="timeline-period">{item.period}</p>
+              </div>
+              <p className="body-copy">{item.description}</p>
+              <ul className="detail-list">
+                {item.highlights.map((highlight) => (
+                  <li key={highlight}>{highlight}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-grid">
+        <div className="section-heading">
+          <p className="eyebrow">Ownership</p>
+          <h2>Ownership stories.</h2>
+        </div>
+        <div className="story-grid">
+          {portfolio.ownershipStories.map((story) => (
+            <article key={story.title} className="info-card">
+              <h3>{story.title}</h3>
+              <p>
+                <strong>Problem:</strong> {story.problem}
+              </p>
+              <p>
+                <strong>Action:</strong> {story.action}
+              </p>
+              <p>
+                <strong>Result:</strong> {story.result}
+              </p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-grid">
+        <div className="section-heading">
+          <p className="eyebrow">Quality</p>
+          <h2>Quality and reliability engineering.</h2>
+        </div>
+        <div className="split-panel">
+          <ul className="detail-list">
+            {portfolio.quality.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-grid">
+        <div className="section-heading">
+          <p className="eyebrow">Influence</p>
+          <h2>Cross-team influence.</h2>
+        </div>
+        <div className="split-panel">
+          <ul className="detail-list">
+            {portfolio.crossTeamInfluence.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-grid">
+        <div className="section-heading">
+          <p className="eyebrow">AI</p>
+          <h2>AI and next-gen systems.</h2>
+        </div>
+        <div className="split-panel">
+          <ul className="detail-list">
+            {portfolio.aiExploration.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="content-grid" id="skills">
+        <div className="section-heading">
+          <p className="eyebrow">Skills</p>
+          <h2>{portfolio.skills.heading}</h2>
+        </div>
+        <div className="skills-grid">
+          {portfolio.skills.groups.map((group) => (
+            <article key={group.title} className="info-card compact-card">
+              <h3>{group.title}</h3>
+              <div className="pill-wrap">
+                {group.items.map((item) => (
+                  <span key={item} className="pill">
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-grid dual-section">
+        <article className="info-card" id="education">
+          <p className="eyebrow">Education</p>
+          <h2>{portfolio.education.heading}</h2>
+          <p>{portfolio.education.description}</p>
+        </article>
+
+        <article className="info-card" id="contact">
+          <p className="eyebrow">Contact</p>
+          <h2>Let&apos;s discuss the next build.</h2>
+          <p>{portfolio.contactCta}</p>
+          <div className="contact-links">
+            <a href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
+            <a href={`tel:${portfolio.phone.replace(/\s+/g, "")}`}>
+              {portfolio.phone}
+            </a>
+            <a href={portfolio.links.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a href={portfolio.links.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a
+              href="/deepak-sarangi-resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Resume PDF
+            </a>
+          </div>
+        </article>
+      </section>
+    </main>
   );
 }
