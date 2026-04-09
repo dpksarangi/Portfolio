@@ -9,10 +9,11 @@ export const portfolio = {
     linkedin: "https://www.linkedin.com/in/deepak-sarangi/",
   },
   heroTitle:
-    "Designing scalable data systems and driving engineering decisions that improve business outcomes.",
+    "Designing scalable backend systems and building reliable services that handle real-world data at scale.",
   intro:
-    "Dynamic Senior Software Engineer with a proven track record at Walmart, specializing in optimizing data workflows and enhancing cloud architectures.",
+    "Experienced in Spring Boot, Kafka, and distributed processing.",
   summary: [
+    "I build backend systems that are reliable because I understand how they fail at scale.",
     "Expert in Java and Apache Spark, I drive impactful data pipeline improvements, including reducing delivery cycles from 3 hours to 30 minutes.",
     "I focus on high-performance, reliable systems while fostering collaboration, clearer engineering decisions, and better outcomes for downstream teams.",
   ],
@@ -41,10 +42,11 @@ export const portfolio = {
     "Mentored engineers on debugging distributed systems and performance optimization.",
   ],
   systemThinking: [
-    "Prefer event-driven architectures for scalability and decoupling, especially in Kafka-based pipelines.",
-    "Balance consistency vs latency based on business needs, such as campaign freshness versus infrastructure cost.",
-    "Design for observability with logging, metrics, and alerting built in from the start.",
-    "Build systems assuming failure through retry handling, idempotency, and backpressure-aware design.",
+    "I design systems assuming failures will happen in production.",
+    "I focus on reliability and fault tolerance in distributed services.",
+    "I prefer event-driven architectures for scalability and decoupling.",
+    "I ensure idempotency and safe retries in asynchronous workflows.",
+    "I think in terms of system behavior under load, not just code paths.",
   ],
   metrics: [
     {
@@ -101,6 +103,130 @@ export const portfolio = {
         "Resolved complex integration issues by identifying bottlenecks and implementing effective solutions.",
         "Developed and maintained robust middleware solutions for seamless communication between enterprise applications.",
         "Optimized integration platform performance, enhancing system reliability and reducing latency for operations.",
+      ],
+    },
+  ],
+  projects: [
+    {
+      title: "User Segmentation & Delivery Platform",
+      oneLiner:
+        "Backend system for generating user segments and delivering them to external CRM systems using event-driven and batch processing.",
+      problem: [
+        "Marketing teams needed to create dynamic user segments.",
+        "The system had to handle data at the scale of millions of users.",
+        "Segment output needed to be delivered reliably to external CRM systems.",
+        "The platform had to support both real-time triggers and scheduled execution.",
+      ],
+      challenges: [
+        "Translating UI filters into executable Spark queries.",
+        "Handling large dataset processing efficiently.",
+        "Breaking huge datasets into uploadable chunks.",
+        "Managing failures across Spark jobs, SFTP uploads, and external API calls.",
+        "Ensuring idempotency and retry safety.",
+        "Supporting scheduled re-processing.",
+      ],
+      architecture: [
+        "UI for filter selection.",
+        "Designed a Spring Boot backend service that parses filters and generates executable processing queries.",
+        "Built processing jobs that handle large-scale datasets and persist outputs for downstream delivery.",
+        "Implemented a chunking service to split large payloads into safe transfer units.",
+        "Integrated with external CRM systems through SFTP uploads and sync/async import APIs.",
+        "Added scheduler-driven execution based on database configurations for recurring workflows.",
+      ],
+      contributions: [
+        "Designed a backend service that translates user-defined filters into executable processing queries for dynamic segment generation at scale.",
+        "Built a downstream delivery pipeline that handles large datasets through safe chunked uploads.",
+        "Implemented a multi-channel integration layer using both SFTP and API-based ingestion.",
+        "Integrated asynchronous bulk import APIs for scalable external delivery.",
+        "Developed scheduler-based execution for recurring segment generation workflows.",
+        "Ensured fault tolerance across distributed processing and external integration paths.",
+      ],
+      failures: [
+        "Large datasets caused failures during upload.",
+        "API rate limits and timeouts from the CRM partner affected delivery.",
+        "Spark job delays impacted downstream processes.",
+      ],
+      improvements: [
+        "Introduced chunking and batching to control load.",
+        "Implemented retry and backoff strategies for API calls.",
+        "Optimized Spark jobs for better performance.",
+        "Improved pipeline orchestration for stability.",
+      ],
+      impact: [
+        "Enabled marketing teams to generate segments at scale through a backend-driven workflow.",
+        "Reduced manual effort in preparing and delivering segment data.",
+        "Improved reliability of backend delivery pipelines under high-volume loads.",
+        "Supported both real-time and scheduled workflows for external integrations.",
+      ],
+    },
+    {
+      title: "Campaign Processing System",
+      oneLiner:
+        "Spring Boot and Kafka-based backend for handling high-volume campaign workflows with fault-tolerant processing.",
+      problem: [
+        "Campaign workflows needed reliable backend processing under high load.",
+        "The system had to support distributed execution without losing operational stability.",
+        "Downstream consumers depended on timely and accurate campaign state transitions.",
+      ],
+      challenges: [
+        "Handling asynchronous workflows safely across distributed services.",
+        "Maintaining throughput while controlling failure propagation.",
+        "Managing retries, delivery guarantees, and operational visibility.",
+      ],
+      architecture: [
+        "Spring Boot services coordinate campaign workflow execution.",
+        "Kafka-based event flow enables decoupled processing across components.",
+        "Validation and fault-handling layers protect downstream systems from inconsistent states.",
+      ],
+      contributions: [
+        "Built backend workflows for high-volume campaign execution.",
+        "Used event-driven processing patterns to improve scalability and decoupling.",
+        "Applied fault-tolerant handling to reduce operational instability during failures.",
+      ],
+      failures: [
+        "Processing delays created downstream pressure during peak load.",
+        "Failure handling had to account for distributed retries and partial completion.",
+      ],
+      improvements: [
+        "Improved retry safety and idempotent processing behavior.",
+        "Strengthened system reliability under load with better validation and error handling.",
+      ],
+      impact: [
+        "Improved backend system reliability for campaign workflows.",
+        "Reduced production issues through safer asynchronous processing patterns.",
+      ],
+    },
+    {
+      title: "Reliability & Performance Framework",
+      oneLiner:
+        "Improved backend system stability through automation, performance benchmarking, and failure analysis.",
+      problem: [
+        "Backend services needed stronger quality controls to avoid recurring production issues.",
+        "Performance bottlenecks and weak validation created reliability risk under load.",
+      ],
+      challenges: [
+        "Finding production failure patterns across multiple systems and workflows.",
+        "Benchmarking behavior under load and identifying weak points before release.",
+      ],
+      architecture: [
+        "Automation and validation layers were introduced earlier in the delivery lifecycle.",
+        "Performance benchmarking and failure analysis informed system hardening decisions.",
+      ],
+      contributions: [
+        "Built automation-heavy validation workflows for service reliability.",
+        "Applied performance benchmarking to identify and reduce bottlenecks.",
+        "Used failure analysis to drive better defect prevention strategies.",
+      ],
+      failures: [
+        "Production issues exposed weak validation and observability gaps.",
+      ],
+      improvements: [
+        "Improved testing and validation strategies to catch issues earlier.",
+        "Strengthened backend stability with better performance and reliability practices.",
+      ],
+      impact: [
+        "Improved backend system stability under high-volume loads.",
+        "Reduced production issues through better validation and testing strategies.",
       ],
     },
   ],
@@ -167,52 +293,35 @@ export const portfolio = {
       "Structured around the kinds of capabilities expected from engineers who design systems, improve reliability, and influence delivery.",
     groups: [
       {
-        title: "Core engineering",
-        items: ["Java", "Python", "JavaScript", "SQL", "Distributed systems"],
+        title: "Backend",
+        items: ["Java", "Spring Boot", "REST APIs", "Python"],
       },
       {
-        title: "Data platforms",
-        items: [
-          "Apache Spark",
-          "Apache Kafka",
-          "Apache Airflow",
-          "BigQuery",
-          "Dataflow",
-          "Pub/Sub",
-          "Dataproc",
-          "ETL/ELT",
-          "Data modeling",
-        ],
+        title: "Distributed systems",
+        items: ["Kafka", "Event-driven architecture", "Distributed systems"],
+      },
+      {
+        title: "Data processing",
+        items: ["Apache Spark", "Hive", "Apache Airflow", "SQL", "ETL/ELT"],
       },
       {
         title: "Cloud & infra",
         items: [
           "Google Cloud Platform",
-          "Cloud architecture",
-          "Cloud deployment",
           "Kubernetes",
           "Docker",
+          "Cloud architecture",
+          "Cloud deployment",
           "Git",
         ],
       },
       {
-        title: "Architecture & practices",
-        items: [
-          "System design",
-          "RESTful APIs",
-          "System integration",
-          "Observability",
-          "Data validation",
-          "NoSQL databases",
-          "Agile",
-          "Scrum",
-        ],
-      },
-      {
-        title: "Quality engineering",
+        title: "Testing & reliability",
         items: [
           "Automation",
           "Performance testing",
+          "Data validation",
+          "Observability",
           "CI/CD pipelines",
           "Jenkins",
           "Concord",

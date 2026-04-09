@@ -4,6 +4,7 @@ const navItems = [
   { label: "About", href: "#about" },
   { label: "Impact", href: "#impact" },
   { label: "Systems", href: "#systems" },
+  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
@@ -32,17 +33,13 @@ export default function Home() {
         <div className="hero-grid" id="top">
           <div className="hero-copy">
             <p className="kicker">{portfolio.location}</p>
-            <h1>{portfolio.heroTitle}</h1>
+            <h1>
+              Designing scalable{" "}
+              <span className="no-break">backend systems</span> and building
+              reliable services that handle{" "}
+              <span className="no-break">real-world data</span> at scale.
+            </h1>
             <p className="lede">{portfolio.intro}</p>
-            <div className="metric-strip">
-              {portfolio.metrics.map((metric) => (
-                <article key={metric.label} className="metric-card">
-                  <p className="metric-value">{metric.value}</p>
-                  <h3>{metric.label}</h3>
-                  <p>{metric.context}</p>
-                </article>
-              ))}
-            </div>
             <div className="hero-actions">
               <a className="button button-primary" href="#impact">
                 View engineering impact
@@ -74,32 +71,44 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="hero-card">
-            <p className="card-label">Quick profile</p>
-            <dl>
-              <div>
-                <dt>Role</dt>
-                <dd>{portfolio.role}</dd>
-              </div>
-              <div>
-                <dt>Focus</dt>
-                <dd>Data systems, platform reliability, architecture decisions</dd>
-              </div>
-              <div>
-                <dt>Email</dt>
-                <dd>
-                  <a href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
-                </dd>
-              </div>
-              <div>
-                <dt>Phone</dt>
-                <dd>
-                  <a href={`tel:${portfolio.phone.replace(/\s+/g, "")}`}>
-                    {portfolio.phone}
-                  </a>
-                </dd>
-              </div>
-            </dl>
+          <aside className="hero-side">
+            <div className="metric-strip">
+              {portfolio.metrics.map((metric) => (
+                <article key={metric.label} className="metric-card">
+                  <p className="metric-value">{metric.value}</p>
+                  <h3>{metric.label}</h3>
+                  <p>{metric.context}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="hero-card">
+              <p className="card-label">Quick profile</p>
+              <dl>
+                <div>
+                  <dt>Role</dt>
+                  <dd>{portfolio.role}</dd>
+                </div>
+                <div>
+                  <dt>Focus</dt>
+                  <dd>Backend systems, reliability, distributed processing</dd>
+                </div>
+                <div>
+                  <dt>Email</dt>
+                  <dd>
+                    <a href={`mailto:${portfolio.email}`}>{portfolio.email}</a>
+                  </dd>
+                </div>
+                <div>
+                  <dt>Phone</dt>
+                  <dd>
+                    <a href={`tel:${portfolio.phone.replace(/\s+/g, "")}`}>
+                      {portfolio.phone}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
           </aside>
         </div>
       </section>
@@ -107,7 +116,7 @@ export default function Home() {
       <section className="content-grid" id="about">
         <div className="section-heading">
           <p className="eyebrow">About</p>
-          <h2>Staff trajectory built on scale, reliability, and influence.</h2>
+          <h2>Built through scalable systems, reliability, and thoughtful execution.</h2>
         </div>
         <div className="stack">
           {portfolio.summary.map((item) => (
@@ -143,7 +152,7 @@ export default function Home() {
       <section className="content-grid" id="systems">
         <div className="section-heading">
           <p className="eyebrow">Systems</p>
-          <h2>How I think about systems.</h2>
+          <h2>How I build backend systems.</h2>
         </div>
         <div className="split-panel">
           <ul className="detail-list">
@@ -165,6 +174,91 @@ export default function Home() {
               <li key={item}>{item}</li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <section className="content-grid project-section" id="projects">
+        <div className="section-heading">
+          <p className="eyebrow">Selected work</p>
+          <h2>Backend systems and reliability-focused projects.</h2>
+        </div>
+        <div className="project-stack">
+          {portfolio.projects.map((project) => (
+            <article key={project.title} className="project-card">
+              <div className="project-header">
+                <p className="timeline-company">Project title</p>
+                <h3>{project.title}</h3>
+                <p className="body-copy">{project.oneLiner}</p>
+              </div>
+
+              <div className="project-grid">
+                <section className="project-block">
+                  <p className="eyebrow">Problem</p>
+                  <ul className="detail-list">
+                    {project.problem.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="project-block">
+                  <p className="eyebrow">Challenges</p>
+                  <ul className="detail-list">
+                    {project.challenges.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="project-block">
+                  <p className="eyebrow">Architecture</p>
+                  <ul className="detail-list">
+                    {project.architecture.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="project-block">
+                  <p className="eyebrow">Key contributions</p>
+                  <ul className="detail-list">
+                    {project.contributions.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="project-block">
+                  <p className="eyebrow">What went wrong</p>
+                  <ul className="detail-list">
+                    {project.failures.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+
+                <section className="project-block">
+                  <p className="eyebrow">Fixes & improvements</p>
+                  <ul className="detail-list">
+                    {project.improvements.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+
+              <section className="project-impact">
+                <p className="eyebrow">Impact</p>
+                <div className="pill-wrap">
+                  {project.impact.map((item) => (
+                    <span key={item} className="pill">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </section>
+            </article>
+          ))}
         </div>
       </section>
 
