@@ -47,9 +47,9 @@ a {
 }
 
 .page-shell {
-  width: min(1180px, calc(100% - 2rem));
+  width: min(1320px, calc(100% - 2.5rem));
   margin: 0 auto;
-  padding: 1rem 0 4rem;
+  padding: 1.25rem 0 5rem;
 }
 
 .hero-panel,
@@ -61,8 +61,8 @@ a {
 }
 
 .hero-panel {
-  border-radius: 32px;
-  padding: 1.25rem;
+  border-radius: 34px;
+  padding: 1.5rem;
 }
 
 .topbar {
@@ -70,7 +70,7 @@ a {
   justify-content: space-between;
   gap: 1.5rem;
   align-items: flex-start;
-  padding-bottom: 2.25rem;
+  padding-bottom: 2rem;
 }
 
 .eyebrow,
@@ -94,18 +94,24 @@ a {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.1rem;
   justify-content: flex-end;
 }
 
 .nav a {
   color: var(--muted);
+  padding-bottom: 0.1rem;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover {
+  border-color: rgba(19, 17, 15, 0.18);
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, 0.85fr);
+  gap: 1.5rem;
   align-items: stretch;
 }
 
@@ -120,17 +126,18 @@ a {
 }
 
 .hero-copy {
-  padding: 2rem;
+  padding: 2.35rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .hero-copy h1 {
-  font-size: clamp(2.4rem, 4.2vw, 4.2rem);
-  line-height: 1.08;
+  font-size: clamp(2.6rem, 4vw, 4.4rem);
+  line-height: 1.04;
   font-weight: 800;
-  max-width: 18ch;
+  max-width: 21ch;
+  text-wrap: balance;
 }
 
 .no-break {
@@ -148,13 +155,15 @@ a {
 .split-panel p,
 .detail-list li {
   color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.75;
+  font-size: 1.03rem;
+  line-height: 1.68;
 }
 
 .lede {
-  max-width: 54ch;
-  margin-top: 1.25rem;
+  max-width: 62ch;
+  margin-top: 1rem;
+  font-size: 1.08rem;
+  line-height: 1.62;
 }
 
 .metric-strip {
@@ -165,7 +174,7 @@ a {
 
 .hero-side {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.9rem;
   align-content: start;
 }
 
@@ -174,6 +183,7 @@ a {
   border: 1px solid rgba(19, 17, 15, 0.08);
   background: rgba(255, 247, 239, 0.88);
   padding: 0.85rem;
+  min-height: 100%;
 }
 
 .metric-value {
@@ -200,7 +210,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
-  margin-top: 2rem;
+  margin-top: 1.7rem;
 }
 
 .external-links {
@@ -220,7 +230,7 @@ a {
   align-items: center;
   justify-content: center;
   min-height: 3.25rem;
-  padding: 0 1.35rem;
+  padding: 0 1.45rem;
   border-radius: 999px;
   font-weight: 700;
   transition:
@@ -243,7 +253,7 @@ a {
 }
 
 .hero-card {
-  padding: 1rem;
+  padding: 1.1rem 1rem;
   align-self: stretch;
 }
 
@@ -267,35 +277,56 @@ a {
 }
 
 .content-grid {
-  margin-top: 1rem;
-  border-radius: 28px;
-  padding: 2rem;
+  margin-top: 1.15rem;
+  border-radius: 30px;
+  padding: 2.2rem;
   display: grid;
-  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
-  gap: 2rem;
+  grid-template-columns: minmax(220px, 0.72fr) minmax(0, 1.28fr);
+  gap: 2.4rem;
 }
 
 .project-section {
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .project-section .section-heading h2 {
   max-width: none;
 }
 
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
 .section-heading h2,
 .info-card h2 {
-  font-size: clamp(1.65rem, 2.7vw, 2.7rem);
-  line-height: 1.1;
-  margin-top: 0.8rem;
+  font-size: clamp(1.8rem, 2.5vw, 2.9rem);
+  line-height: 1.08;
+  margin-top: 0.65rem;
   font-weight: 800;
-  max-width: 16ch;
+  max-width: 17ch;
+  text-wrap: balance;
+}
+
+.section-heading {
+  position: sticky;
+  top: 1.25rem;
+  align-self: start;
+}
+
+.section-column {
+  max-width: 82ch;
+}
+
+.reading-panel {
+  max-width: 84ch;
 }
 
 .stack {
   display: grid;
-  gap: 1.25rem;
+  gap: 1.4rem;
 }
 
 .strength-grid,
@@ -309,27 +340,45 @@ a {
 
 .skills-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
 }
 
 .project-card {
   border-radius: 28px;
   background: var(--panel-strong);
   border: 1px solid rgba(19, 17, 15, 0.08);
-  padding: 1.75rem;
+  padding: 1.9rem;
+}
+
+.architecture-card {
+  padding: 2rem;
+}
+
+.architecture-header {
+  max-width: 88ch;
 }
 
 .project-header h3 {
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 800;
-  margin-top: 0.5rem;
+  margin-top: 0.45rem;
+  line-height: 1.08;
 }
 
 .project-header .body-copy {
-  max-width: 68ch;
+  max-width: 76ch;
   margin-top: 0.85rem;
+  font-size: 1.08rem;
 }
 
 .project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.15rem;
+  margin-top: 1.65rem;
+}
+
+.architecture-summary-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
@@ -340,11 +389,48 @@ a {
   border-radius: 22px;
   border: 1px solid rgba(19, 17, 15, 0.08);
   background: rgba(255, 247, 239, 0.68);
-  padding: 1.15rem;
+  padding: 1.2rem 1.15rem;
 }
 
 .project-block .detail-list {
-  margin-top: 0.8rem;
+  margin-top: 0.65rem;
+}
+
+.project-block-wide {
+  grid-column: span 2;
+}
+
+.architecture-flow {
+  list-style: none;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.architecture-step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  border-radius: 18px;
+  padding: 0.85rem;
+  background: rgba(255, 255, 255, 0.52);
+  border: 1px solid rgba(19, 17, 15, 0.06);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.architecture-index {
+  font-family: "SFMono-Regular", "Menlo", "Monaco", monospace;
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-deep);
+  background: rgba(201, 107, 59, 0.1);
+  border: 1px solid rgba(201, 107, 59, 0.18);
+  border-radius: 999px;
+  padding: 0.32rem 0.45rem;
 }
 
 .project-impact {
@@ -353,21 +439,46 @@ a {
   border-top: 1px solid rgba(19, 17, 15, 0.08);
 }
 
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 0.9rem;
+}
+
+.impact-card {
+  border-radius: 18px;
+  background: rgba(201, 107, 59, 0.08);
+  border: 1px solid rgba(201, 107, 59, 0.18);
+  padding: 0.95rem 1rem;
+}
+
+.impact-card p {
+  color: var(--foreground);
+  line-height: 1.52;
+  font-weight: 600;
+}
+
+.metric-card-large {
+  padding: 1.1rem;
+}
+
 .compact-card {
-  padding: 1.25rem;
+  padding: 1.3rem;
 }
 
 .info-card,
 .timeline-card,
 .split-panel {
-  padding: 1.5rem;
+  padding: 1.55rem;
 }
 
 .info-card h3,
 .timeline-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.38rem;
   font-weight: 800;
-  margin-top: 0.5rem;
+  margin-top: 0.4rem;
+  line-height: 1.15;
 }
 
 .timeline-head {
@@ -383,25 +494,26 @@ a {
 }
 
 .detail-list {
-  margin-top: 1rem;
-  padding-left: 1.2rem;
+  margin-top: 0.95rem;
+  padding-left: 1.15rem;
   display: grid;
-  gap: 0.7rem;
+  gap: 0.65rem;
 }
 
 .pill-wrap {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
+  gap: 0.7rem;
+  margin-top: 1rem;
 }
 
 .pill {
   border-radius: 999px;
   border: 1px solid rgba(201, 107, 59, 0.25);
   background: rgba(201, 107, 59, 0.08);
-  padding: 0.75rem 1rem;
+  padding: 0.68rem 0.92rem;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .dual-section {
@@ -423,12 +535,23 @@ a {
   .content-grid,
   .dual-section,
   .skills-grid,
-  .project-grid {
+  .project-grid,
+  .impact-grid,
+  .metrics-grid,
+  .architecture-summary-grid {
     grid-template-columns: 1fr;
   }
 
   .metric-strip {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .architecture-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .project-block-wide {
+    grid-column: auto;
   }
 
   .hero-card dl {
@@ -453,12 +576,21 @@ a {
   .info-card h2 {
     max-width: 100%;
   }
+
+  .section-heading {
+    position: static;
+  }
+
+  .section-column,
+  .reading-panel {
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 640px) {
   .page-shell {
-    width: min(100% - 1rem, 1180px);
-    padding-bottom: 2rem;
+    width: min(100% - 1rem, 1320px);
+    padding-bottom: 2.5rem;
   }
 
   .hero-panel,
@@ -486,11 +618,11 @@ a {
   .metric-card,
   .project-card,
   .project-block {
-    padding: 1.25rem;
+    padding: 1.2rem;
   }
 
   .project-section {
-    gap: 1.25rem;
+    gap: 1.2rem;
   }
 
   .nav {
@@ -510,8 +642,8 @@ a {
   }
 
   .hero-copy h1 {
-    font-size: clamp(2rem, 8vw, 2.8rem);
-    line-height: 1.04;
+    font-size: clamp(2.05rem, 7.8vw, 2.9rem);
+    line-height: 1.06;
     max-width: 100%;
   }
 
@@ -528,14 +660,17 @@ a {
   .info-card p,
   .split-panel p,
   .metric-card p,
-  .detail-list li {
+  .detail-list li,
+  .impact-card p,
+  .architecture-step {
     font-size: 0.98rem;
-    line-height: 1.65;
+    line-height: 1.58;
   }
 
   .section-heading h2,
-  .info-card h2 {
-    font-size: clamp(1.5rem, 7vw, 2.1rem);
+  .info-card h2,
+  .project-header h3 {
+    font-size: clamp(1.55rem, 6.8vw, 2.2rem);
     max-width: 100%;
   }
 
@@ -560,6 +695,20 @@ a {
   .hero-card dd,
   .contact-links a {
     overflow-wrap: anywhere;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1180px) {
+  .page-shell {
+    width: min(100% - 2rem, 1280px);
+  }
+
+  .hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+  }
+
+  .content-grid {
+    grid-template-columns: minmax(200px, 0.72fr) minmax(0, 1.28fr);
   }
 }
 
