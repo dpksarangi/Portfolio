@@ -31,13 +31,26 @@ export default function Home() {
 
         <div className="hero-grid" id="top">
           <div className="hero-copy">
-            <div>
+            <div className="hero-intro">
               <p className="kicker">{portfolio.location}</p>
-              <h1>{portfolio.heroTitle}</h1>
-              <p className="lede">{portfolio.intro}</p>
+              <h1>{portfolio.hero.title}</h1>
+              <p className="hero-subtitle">{portfolio.hero.subtitle}</p>
+
+              <div className="hero-metrics" aria-label="Key experience metrics">
+                {portfolio.hero.metrics.map((metric) => (
+                  <article key={metric.label} className="hero-metric">
+                    <p className="hero-metric-value">{metric.value}</p>
+                    <p className="hero-metric-label">{metric.label}</p>
+                  </article>
+                ))}
+              </div>
+
+              <p className="hero-stack">
+                {portfolio.hero.techStack.join(" • ")}
+              </p>
             </div>
 
-            <div>
+            <div className="hero-footer">
               <div className="hero-actions">
                 <a className="button button-primary" href="#architectures">
                   View featured architectures
@@ -71,16 +84,14 @@ export default function Home() {
           </div>
 
           <aside className="hero-card">
-            <p className="card-label">Quick profile</p>
-            <dl>
-              <div>
-                <dt>Role</dt>
-                <dd>{portfolio.role}</dd>
-              </div>
-              <div>
-                <dt>Focus</dt>
-                <dd>Backend systems, reliability, distributed processing</dd>
-              </div>
+            <p className="card-label">{portfolio.heroProfile.heading}</p>
+            <dl className="hero-glance">
+              {portfolio.heroProfile.highlights.map((item) => (
+                <div key={item.label}>
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
+              ))}
               <div>
                 <dt>Email</dt>
                 <dd>

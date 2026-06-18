@@ -8,10 +8,30 @@ export const portfolio = {
     github: "https://github.com/dpksarangi",
     linkedin: "https://www.linkedin.com/in/deepak-sarangi/",
   },
-  heroTitle:
-    "Designing scalable backend systems and building reliable services that handle real-world data at scale.",
-  intro:
-    "Experienced in Spring Boot, Kafka, and distributed processing.",
+  hero: {
+    title: "Senior Software Engineer",
+    subtitle:
+      "Backend Engineer specializing in distributed systems and large-scale data processing.",
+    metrics: [
+      { value: "10+", label: "Years Experience" },
+      { value: "50M+", label: "Users Segmented Daily" },
+      { value: "1B+", label: "Events Processed Daily" },
+    ],
+    techStack: ["Java", "Spring Boot", "Spark", "Kafka", "GCP"],
+  },
+  heroProfile: {
+    heading: "At a glance",
+    highlights: [
+      {
+        label: "Specialization",
+        value: "Distributed systems, backend platforms, data pipelines",
+      },
+      {
+        label: "Systems owned",
+        value: "Segmentation, streaming campaigns, CRM delivery",
+      },
+    ],
+  },
   keyMetrics: [
     {
       value: "10+",

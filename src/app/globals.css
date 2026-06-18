@@ -10,6 +10,9 @@
   --accent: #c96b3b;
   --accent-deep: #8f3f1d;
   --shadow: 0 24px 80px rgba(74, 49, 29, 0.12);
+  /* metric-specific colours aligned to the warm page palette */
+  --metric-accent: var(--accent-deep);
+  --metric-bg: rgba(201, 107, 59, 0.06);
 }
 
 @theme inline {
@@ -70,7 +73,7 @@ a {
   justify-content: space-between;
   gap: 1.5rem;
   align-items: flex-start;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
 }
 
 .eyebrow,
@@ -126,18 +129,82 @@ a {
 }
 
 .hero-copy {
-  padding: 2.35rem;
+  padding: 1.85rem 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 1.65rem;
+  justify-content: flex-start;
+}
+
+.hero-intro {
+  display: grid;
+  gap: 0;
+}
+
+.hero-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  margin-top: 0.15rem;
 }
 
 .hero-copy h1 {
-  font-size: clamp(2.6rem, 4vw, 4.4rem);
-  line-height: 1.04;
+  font-size: clamp(1.85rem, 2.8vw, 2.65rem);
+  line-height: 1.12;
   font-weight: 800;
-  max-width: 21ch;
-  text-wrap: balance;
+  max-width: none;
+  margin-top: 0.35rem;
+}
+
+.hero-subtitle {
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.5;
+  max-width: 52ch;
+  margin-top: 0.55rem;
+}
+
+.hero-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 1.25rem;
+}
+
+.hero-metric {
+  border-radius: 18px;
+  border: 1px solid rgba(19, 17, 15, 0.08);
+  background: var(--metric-bg);
+  padding: 0.75rem 0.8rem;
+}
+
+.hero-metric-value {
+  font-size: 1.28rem;
+  line-height: 1.1;
+  font-weight: 800;
+  color: var(--metric-accent);
+}
+
+.hero-metric-label {
+  margin-top: 0.28rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.hero-stack {
+  margin-top: 0.95rem;
+  font-family: "SFMono-Regular", "Menlo", "Monaco", monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.hero-footer {
+  display: grid;
+  gap: 0;
 }
 
 .no-break {
@@ -210,7 +277,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
-  margin-top: 1.7rem;
+  margin-top: 0;
 }
 
 .external-links {
@@ -253,27 +320,36 @@ a {
 }
 
 .hero-card {
-  padding: 1.1rem 1rem;
+  padding: 1.5rem 1.35rem;
   align-self: stretch;
+  display: flex;
+  flex-direction: column;
 }
 
-.hero-card dl {
+.hero-glance {
   display: grid;
-  gap: 0.85rem;
+  gap: 1rem;
   margin-top: 1rem;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  flex: 1;
 }
 
-.hero-card dt {
-  font-size: 0.82rem;
+.hero-glance dt {
+  font-size: 0.76rem;
   color: var(--muted);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.25rem;
+  font-family: "SFMono-Regular", "Menlo", "Monaco", monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
-.hero-card dd {
-  font-size: 0.98rem;
+.hero-glance dd {
+  font-size: 0.96rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.42;
+}
+
+.hero-glance a {
+  color: var(--accent-deep);
 }
 
 .content-grid {
@@ -303,17 +379,28 @@ a {
 .section-heading h2,
 .info-card h2 {
   font-size: clamp(1.8rem, 2.5vw, 2.9rem);
-  line-height: 1.08;
+  /* ensure adequate vertical spacing and prevent line overlap */
+  line-height: 1.32;
   margin-top: 0.65rem;
+  margin-bottom: 0.6rem;
   font-weight: 800;
   max-width: 17ch;
-  text-wrap: balance;
+  /* normalize letter spacing and wrapping to avoid browser-specific compression */
+  letter-spacing: normal;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  -webkit-font-smoothing: antialiased;
+  transform: none;
+  will-change: auto;
 }
 
 .section-heading {
-  position: sticky;
-  top: 1.25rem;
+  /* Disable sticky behaviour so H2 moves with the document flow */
+  position: static;
+  top: auto;
   align-self: start;
+  z-index: auto;
 }
 
 .section-column {
@@ -546,6 +633,10 @@ a {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .architecture-flow {
     grid-template-columns: 1fr;
   }
@@ -554,8 +645,8 @@ a {
     grid-column: auto;
   }
 
-  .hero-card dl {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .hero-copy h1 {
+    font-size: clamp(1.75rem, 4.5vw, 2.35rem);
   }
 
   .topbar,
@@ -564,12 +655,7 @@ a {
   }
 
   .topbar {
-    padding-bottom: 1.75rem;
-  }
-
-  .hero-copy h1 {
-    max-width: 18ch;
-    font-size: clamp(2.2rem, 6vw, 3.6rem);
+    padding-bottom: 1.35rem;
   }
 
   .section-heading h2,
@@ -633,18 +719,23 @@ a {
     font-size: 0.72rem;
   }
 
-  .metric-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-card dl {
+  .metric-strip,
+  .hero-metrics {
     grid-template-columns: 1fr;
   }
 
   .hero-copy h1 {
-    font-size: clamp(2.05rem, 7.8vw, 2.9rem);
-    line-height: 1.06;
-    max-width: 100%;
+    font-size: clamp(1.65rem, 6.5vw, 2.1rem);
+    line-height: 1.14;
+  }
+
+  .hero-metric-value {
+    font-size: 1.35rem;
+  }
+
+  .hero-stack {
+    font-size: 0.76rem;
+    line-height: 1.5;
   }
 
   .no-break {
@@ -671,6 +762,7 @@ a {
   .info-card h2,
   .project-header h3 {
     font-size: clamp(1.55rem, 6.8vw, 2.2rem);
+    line-height: 1.22;
     max-width: 100%;
   }
 
@@ -693,6 +785,7 @@ a {
   }
 
   .hero-card dd,
+  .hero-glance dd,
   .contact-links a {
     overflow-wrap: anywhere;
   }
@@ -797,9 +890,38 @@ a {
   }
 
   .hero-copy h1 {
-    font-size: 24pt;
-    line-height: 1.1;
+    font-size: 20pt;
+    line-height: 1.15;
     max-width: none;
+  }
+
+  .hero-subtitle {
+    font-size: 10.5pt;
+    line-height: 1.4;
+  }
+
+  .hero-metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+  }
+
+  .hero-metric {
+    padding: 0.55rem;
+    background: transparent;
+  }
+
+  .hero-metric-value {
+    font-size: 12pt;
+  }
+
+  .hero-metric-label {
+    font-size: 8pt;
+  }
+
+  .hero-stack {
+    font-size: 9pt;
+    margin-top: 0.65rem;
   }
 
   .section-heading h2,
@@ -808,7 +930,7 @@ a {
   .timeline-card h3,
   .info-card h3 {
     font-size: 15pt;
-    line-height: 1.2;
+    line-height: 1.25;
     max-width: none;
   }
 
