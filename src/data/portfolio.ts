@@ -52,6 +52,12 @@ export const portfolio = {
         "Built systems that support large-scale audience generation and downstream delivery.",
     },
     {
+      value: "10+",
+      label: "banners / tenants onboarded",
+      context:
+        "Worked on multi-tenant and multi-banner platforms that required reusable architecture and reliable onboarding patterns.",
+    },
+    {
       value: "Multi-platform",
       label: "production ownership",
       context:
@@ -175,11 +181,40 @@ export const portfolio = {
         "Strengthened engineering confidence in distributed and integration-heavy workflows.",
       ],
     },
+    {
+      title: "AI Developer Productivity System",
+      oneLiner:
+        "Internal AI-assisted system focused on improving developer productivity through workflow automation and modern LLM-enabled tooling.",
+      problem:
+        "Engineering teams needed faster ways to navigate code, automate repetitive workflows, and improve day-to-day productivity without compromising reliability or developer control.",
+      scale:
+        "Applied in an engineering environment with multiple users, internal workflows, and integration points across existing development processes.",
+      architecture: [
+        "Service-oriented backend integrates AI-assisted workflows into developer-facing tooling.",
+        "LLM-enabled components support productivity tasks such as information retrieval, workflow assistance, and guided automation.",
+        "Integration layer connects AI capabilities with existing engineering systems and internal developer processes.",
+      ],
+      keyDecisions: [
+        "Focused on practical developer productivity use cases instead of broad AI experimentation.",
+        "Used integration-friendly backend patterns so AI capabilities could fit existing workflows.",
+        "Kept the system workflow-oriented, with emphasis on usefulness, safety, and operational clarity.",
+      ],
+      tradeOffs: [
+        "Balanced speed of AI-assisted workflows with the need for predictable output and developer trust.",
+        "Accepted some product iteration complexity in exchange for embedding AI into real engineering workflows rather than isolating it as a demo system.",
+      ],
+      impact: [
+        "Expanded the portfolio from backend and data platforms into AI-assisted engineering systems.",
+        "Improved developer workflow efficiency through automation-oriented AI integration.",
+        "Added hands-on system experience with LLM-enabled productivity tooling.",
+      ],
+    },
   ],
   technicalLeadership: [
     "Defined architecture for scalable data pipelines handling high-volume campaign data.",
     "Led cross-team discussions to align data contracts and reduce downstream inconsistencies.",
     "Standardized data validation frameworks across pipelines to reduce production defects.",
+    "Worked on platforms with 10+ banners or tenants onboarded, requiring reusable architecture and careful multi-tenant design decisions.",
     "Mentored engineers on debugging distributed systems and performance optimization.",
     "Contributed to engineering standards around reliability, retry safety, and fault tolerance.",
     "Acted as a bridge between engineering implementation and business-facing data needs.",
@@ -194,6 +229,7 @@ export const portfolio = {
       highlights: [
         "Improved data freshness from a 3-hour batch cycle to 30-minute intervals.",
         "Built and maintained distributed systems using Java, Spark, Airflow, Python, Kafka, and GCP.",
+        "Worked on platforms supporting 10+ banners or tenants through reusable backend and platform patterns.",
         "Focused on reliability and performance for high-scale campaign analytics workflows.",
       ],
     },
